@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Drey Autos</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .about-hero {
+      min-height: 60vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      padding: 120px 36px;
+      background: linear-gradient(135deg, #f3f6ff 0%, rgba(243, 246, 255, 0.5) 100%);
+    }
+
+    .about-hero-content h1 {
+      font-size: clamp(2.5rem, 3.5vw, 4rem);
+      line-height: 1.1;
+      margin: 0 0 24px;
+    }
+
+    .about-hero-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin: 0 0 32px;
+    }
+
+    .about-hero-img {
+      position: relative;
+      height: 500px;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(47, 105, 255, 0.15);
+      background: var(--surface-strong);
+    }
+
+    .about-hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0;
+      margin: 0;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+
+    .value-card {
+      padding: 36px 28px;
+      background: var(--surface);
+      border: 1px solid rgba(23, 33, 43, 0.06);
+      border-radius: 28px;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      text-align: center;
+    }
+
+    .value-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 30px 90px rgba(47, 105, 255, 0.15);
+      background: #f9fafb;
+    }
+
+    .value-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: inline-block;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .value-card h3 {
+      font-size: 1.3rem;
+      margin: 16px 0 12px;
+      color: var(--text);
+    }
+
+    .value-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .team-section {
+      padding: 80px 36px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+
+    .team-member {
+      text-align: center;
+    }
+
+    .team-photo {
+      width: 100%;
+      height: 280px;
+      background: linear-gradient(135deg, #e8f0ff 0%, #f3f6ff 100%);
+      border-radius: 24px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .team-member:hover .team-photo {
+      transform: scale(1.05);
+      box-shadow: 0 24px 60px rgba(47, 105, 255, 0.2);
+    }
+
+    .team-member h4 {
+      font-size: 1.1rem;
+      margin: 0 0 6px;
+      color: var(--text);
+    }
+
+    .team-member p {
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin: 0 0 12px;
+    }
+
+    .team-member .bio {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .timeline {
+      padding: 80px 36px;
+      background: var(--surface);
+    }
+
+    .timeline-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent), transparent);
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 3px solid var(--bg);
+    }
+
+    .timeline-year {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: 0;
+    }
+
+    .timeline-item h4 {
+      font-size: 1.2rem;
+      margin: 0 0 12px;
+      color: var(--text);
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .stats-section {
+      padding: 80px 36px;
+      background: linear-gradient(135deg, rgba(47, 105, 255, 0.05), rgba(243, 246, 255, 0.5));
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .stat-box {
+      text-align: center;
+      padding: 40px 24px;
+      background: var(--bg);
+      border-radius: 24px;
+      border: 1px solid rgba(23, 33, 43, 0.08);
+      transition: all 0.4s ease;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 70px rgba(23, 33, 43, 0.1);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .stat-label {
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .stat-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .mission-section {
+      padding: 80px 36px;
+    }
+
+    .mission-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .mission-box {
+      background: linear-gradient(135deg, #f3f6ff 0%, rgba(243, 246, 255, 0.8) 100%);
+      border: 2px solid var(--accent-soft);
+      border-radius: 28px;
+      padding: 48px;
+      text-align: center;
+    }
+
+    .mission-box h2 {
+      font-size: 2rem;
+      margin: 0 0 24px;
+      color: var(--text);
+    }
+
+    .mission-box p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    @media (max-width: 1080px) {
+      .about-hero {
+        grid-template-columns: 1fr;
+        padding: 80px 36px;
+      }
+
+      .about-hero-img {
+        height: 400px;
+      }
+
+      .values-grid,
+      .team-grid,
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .values-grid,
+      .team-grid,
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 120px 1fr;
+        gap: 20px;
+      }
+
+      .mission-box {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero-section">
+      <nav class="navbar">
+        <a class="brand" href="index.html"><strong>Drey Autos</strong></a>
+        <button class="nav-toggle" aria-label="Open navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-inner">
+          <a href="inventory.html">Inventory</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+
+      <section class="about-hero">
+        <div class="about-hero-content reveal">
+          <h1>Redefining luxury automotive excellence</h1>
+          <p>At Drey Autos, we believe that luxury goes beyond the vehicle—it's about the experience, the craftsmanship, and the connection between driver and machine.</p>
+          <p style="color: var(--text); margin: 24px 0 0;">Founded on principles of transparency, quality, and customer-first service, we've built a platform that celebrates the finest vehicles and the discerning drivers who choose them.</p>
+        </div>
+
+        <div class="about-hero-img reveal">
+          <img src="images/2021 Mercedes-AMG GLE53 Coupe electrifies - CNET.jfif" alt="Luxury vehicle" />
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <!-- Mission Section -->
+      <section class="mission-section">
+        <div class="mission-content">
+          <div class="mission-box reveal">
+            <h2>Our Mission</h2>
+            <p>To democratize access to premium vehicles by providing a transparent, beautifully designed platform where collectors and enthusiasts discover their next automotive passion.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Values Section -->
+      <section class="section">
+        <div class="section-header reveal">
+          <span class="eyebrow">What drives us</span>
+          <h2>Our Core Values</h2>
+        </div>
+        <div class="values-grid">
+          <div class="value-card reveal">
+            <div class="value-icon">✨</div>
+            <h3>Excellence</h3>
+            <p>We curate only the finest vehicles, vetted for quality, condition, and authenticity. Excellence is non-negotiable.</p>
+          </div>
+          <div class="value-card reveal">
+            <div class="value-icon">🔍</div>
+            <h3>Transparency</h3>
+            <p>Complete vehicle history, transparent pricing, and honest communication build trust with every customer interaction.</p>
+          </div>
+          <div class="value-card reveal">
+            <div class="value-icon">🚗</div>
+            <h3>Passion</h3>
+            <p>We're automotive enthusiasts first. Our passion for cars translates into exceptional service and genuine expertise.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats Section -->
+      <section class="stats-section">
+        <div class="stats-grid">
+          <div class="stat-box reveal">
+            <div class="stat-number" data-count="250">0</div>
+            <div class="stat-label">Vehicles Listed</div>
+            <p class="stat-desc">Premium cars from collectors worldwide</p>
+          </div>
+          <div class="stat-box reveal">
+            <div class="stat-number" data-count="12">0</div>
+            <div class="stat-label">Years of Experience</div>
+            <p class="stat-desc">Trusted expertise in luxury automotive</p>
+          </div>
+          <div class="stat-box reveal">
+            <div class="stat-number" data-count="98">0</div>
+            <div class="stat-label">Customer Satisfaction</div>
+            <p class="stat-desc">Percent of happy collectors and buyers</p>
+          </div>
+          <div class="stat-box reveal">
+            <div class="stat-number" data-count="45">0</div>
+            <div class="stat-label">Global Partners</div>
+            <p class="stat-desc">Dealerships and collectors worldwide</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline Section -->
+      <section class="timeline">
+        <div class="section-header reveal" style="margin-bottom: 60px;">
+          <span class="eyebrow">Our journey</span>
+          <h2>Company Timeline</h2>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-item reveal">
+            <div class="timeline-year">2014</div>
+            <div>
+              <h4>Founded</h4>
+              <p>Drey Autos launched with a vision to revolutionize how luxury vehicles are bought and sold online.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-year">2016</div>
+            <div>
+              <h4>100+ Listings</h4>
+              <p>Expanded our collection and established partnerships with premium dealers across multiple continents.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-year">2019</div>
+            <div>
+              <h4>Website Redesign</h4>
+              <p>Launched a completely redesigned platform with advanced filtering, virtual tours, and enhanced user experience.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-year">2023</div>
+            <div>
+              <h4>Global Expansion</h4>
+              <p>Achieved worldwide reach with partnerships in 45 countries and multilingual support for global customers.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-year">2024</div>
+            <div>
+              <h4>Milestone Achievement</h4>
+              <p>Reached 250+ premium vehicles listed and established ourselves as the leading luxury automotive platform.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Team Section -->
+      <section class="team-section">
+        <div class="section-header reveal" style="margin-bottom: 60px;">
+          <span class="eyebrow">Meet the team</span>
+          <h2>Driven by Experts</h2>
+        </div>
+        <div class="team-grid">
+          <div class="team-member reveal">
+            <div class="team-photo">👨‍💼</div>
+            <h4>Marcus Chen</h4>
+            <p>CEO & Founder</p>
+            <p class="bio">Automotive enthusiast with 20+ years in luxury market strategy and business development.</p>
+          </div>
+          <div class="team-member reveal">
+            <div class="team-photo">👩‍💼</div>
+            <h4>Sarah Mitchell</h4>
+            <p>Chief Operations Officer</p>
+            <p class="bio">Expert in customer experience and operational excellence. Ensures seamless transactions.</p>
+          </div>
+          <div class="team-member reveal">
+            <div class="team-photo">👨‍🔧</div>
+            <h4>David Rodriguez</h4>
+            <p>Head of Inspections</p>
+            <p class="bio">Master technician with expertise in vehicle authentication and condition assessment.</p>
+          </div>
+          <div class="team-member reveal">
+            <div class="team-photo">👩‍💻</div>
+            <h4>Emma Williams</h4>
+            <p>Head of Design & UX</p>
+            <p class="bio">Digital innovator creating beautiful, intuitive experiences for luxury shoppers.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="section contact" id="contact">
+        <div class="contact-panel reveal">
+          <div>
+            <span class="eyebrow">Ready to explore</span>
+            <h2>Discover your next luxury vehicle</h2>
+          </div>
+          <a class="button button-primary" href="inventory.html">View Inventory</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 Drey Autos · A modern automotive showcase.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Animate numbers on scroll
+    const observerNumbers = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !entry.target.dataset.counted) {
+            const target = entry.target;
+            const finalCount = parseInt(target.dataset.count);
+            let currentCount = 0;
+            const increment = finalCount / 50;
+
+            const counter = setInterval(() => {
+              currentCount += increment;
+              if (currentCount >= finalCount) {
+                target.textContent = finalCount + (target.dataset.count === '98' ? '%' : '+');
+                clearInterval(counter);
+              } else {
+                target.textContent = Math.floor(currentCount) + (target.dataset.count === '98' ? '%' : '+');
+              }
+            }, 30);
+
+            target.dataset.counted = 'true';
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    document.querySelectorAll('.stat-number').forEach((el) => observerNumbers.observe(el));
+  </script>
+</body>
+</html>

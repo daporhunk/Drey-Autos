@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - Drey Autos</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .contact-hero {
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 36px;
+      background: linear-gradient(135deg, #f3f6ff 0%, rgba(243, 246, 255, 0.5) 100%);
+    }
+
+    .contact-hero h1 {
+      font-size: clamp(2.5rem, 3.5vw, 4rem);
+      margin: 0 0 24px;
+    }
+
+    .contact-hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      padding: 80px 36px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 14px 16px;
+      border: 1px solid rgba(23, 33, 43, 0.12);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: white;
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(47, 105, 255, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .submit-btn {
+      padding: 16px 28px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(47, 105, 255, 0.2);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .form-message {
+      padding: 14px 16px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 0.95rem;
+      display: none;
+    }
+
+    .form-message.success {
+      background: #e6f9f0;
+      color: #047857;
+      border: 1px solid #9ff2d0;
+      display: block;
+    }
+
+    .form-message.error {
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+      display: block;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .info-card {
+      background: var(--surface);
+      padding: 36px;
+      border-radius: 24px;
+      border: 1px solid rgba(23, 33, 43, 0.06);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .info-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 70px rgba(23, 33, 43, 0.1);
+    }
+
+    .info-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .info-card h3 {
+      font-size: 1.2rem;
+      margin: 0 0 12px;
+      color: var(--text);
+    }
+
+    .info-card p {
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .info-card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .info-card a:hover {
+      color: #2050d9;
+      text-decoration: underline;
+    }
+
+    .hours-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+    }
+
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .social-btn {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(23, 33, 43, 0.12);
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-btn:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .map-container {
+      padding: 80px 36px;
+      background: var(--surface-strong);
+    }
+
+    .map-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      border-radius: 24px;
+      overflow: hidden;
+      height: 500px;
+      background: linear-gradient(135deg, #e8f0ff 0%, #f3f6ff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 24px 70px rgba(23, 33, 43, 0.1);
+    }
+
+    .map-placeholder {
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .map-placeholder h3 {
+      font-size: 1.5rem;
+      color: var(--text);
+      margin: 0 0 12px;
+    }
+
+    .faq-section {
+      padding: 80px 36px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(23, 33, 43, 0.08);
+      padding-bottom: 20px;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .faq-question:hover {
+      color: var(--accent);
+    }
+
+    .faq-question h4 {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .faq-toggle {
+      font-size: 1.5rem;
+      color: var(--accent);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-answer {
+      display: none;
+      margin-top: 16px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .faq-answer.open {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .map-wrapper {
+        height: 350px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .contact-hero {
+        padding: 80px 24px;
+      }
+
+      .contact-container {
+        padding: 40px 24px;
+      }
+
+      .map-container {
+        padding: 40px 24px;
+      }
+
+      .faq-section {
+        padding: 40px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero-section">
+      <nav class="navbar">
+        <a class="brand" href="index.html">Drey Autos</a>
+        <button class="nav-toggle" aria-label="Open navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-inner">
+          <a href="inventory.html">Inventory</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+
+      <section class="contact-hero">
+        <h1>Get in Touch</h1>
+        <p>Have questions about a vehicle or need assistance? Our team is ready to help. Reach out today.</p>
+      </section>
+    </header>
+
+    <main>
+      <!-- Contact Form & Info Section -->
+      <section class="section">
+        <div class="contact-container">
+          <!-- Contact Form -->
+          <div class="reveal">
+            <h2 style="margin-top: 0; margin-bottom: 28px;">Send us a message</h2>
+            <form class="contact-form" id="contactForm">
+              <div class="form-message" id="formMessage"></div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fullname">Full Name</label>
+                  <input type="text" id="fullname" name="fullname" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
+                </div>
+                <div class="form-group">
+                  <label for="subject">Subject</label>
+                  <select id="subject" name="subject" required>
+                    <option value="">Select a topic</option>
+                    <option value="vehicle-inquiry">Vehicle Inquiry</option>
+                    <option value="test-drive">Test Drive</option>
+                    <option value="financing">Financing</option>
+                    <option value="general">General Question</option>
+                    <option value="partnership">Partnership</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell us more about your inquiry..." required></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+          </div>
+
+          <!-- Contact Information -->
+          <div class="contact-info">
+            <h2 style="margin-top: 0; margin-bottom: 8px;">Contact Information</h2>
+            <p style="color: var(--muted); margin: 0 0 32px;">Reach out through any of these channels. We typically respond within 24 hours.</p>
+
+            <div class="info-card reveal">
+              <div class="info-icon">📞</div>
+              <h3>Phone</h3>
+              <p><a href="tel:+18005551234">+1 (800) 555-1234</a></p>
+              <p style="font-size: 0.9rem;">Available Monday-Friday, 9am-6pm EST</p>
+            </div>
+
+            <div class="info-card reveal">
+              <div class="info-icon">✉️</div>
+              <h3>Email</h3>
+              <p><a href="mailto:info@dreyautos.com">info@dreyautos.com</a></p>
+              <p><a href="mailto:sales@dreyautos.com">sales@dreyautos.com</a></p>
+              <p style="font-size: 0.9rem;">For specific inquiries, use our dedicated email</p>
+            </div>
+
+            <div class="info-card reveal">
+              <div class="info-icon">📍</div>
+              <h3>Address</h3>
+              <p>Drey Autos Headquarters<br>
+              123 Luxury Drive<br>
+              New York, NY 10001<br>
+              United States</p>
+            </div>
+
+            <div class="info-card reveal">
+              <div class="info-icon">🕐</div>
+              <h3>Business Hours</h3>
+              <ul class="hours-list">
+                <li><span>Monday - Friday</span><span>9:00 AM - 6:00 PM</span></li>
+                <li><span>Saturday</span><span>10:00 AM - 4:00 PM</span></li>
+                <li><span>Sunday</span><span>Closed</span></li>
+              </ul>
+            </div>
+
+            <div class="info-card reveal">
+              <div class="info-icon">🌐</div>
+              <h3>Follow Us</h3>
+              <p style="margin-bottom: 16px;">Stay updated with our latest vehicles and news</p>
+              <div class="social-links">
+                <button class="social-btn" title="Facebook">f</button>
+                <button class="social-btn" title="Instagram">📷</button>
+                <button class="social-btn" title="Twitter">𝕏</button>
+                <button class="social-btn" title="LinkedIn">in</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Map Section -->
+      <section class="map-container">
+        <div class="map-wrapper">
+          <div class="map-placeholder reveal">
+            <h3>📍 Our Location</h3>
+            <p>Interactive map would appear here</p>
+            <p style="font-size: 0.9rem; margin-top: 16px;">123 Luxury Drive, New York, NY 10001</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="faq-section">
+        <div class="section-header reveal" style="margin-bottom: 40px;">
+          <span class="eyebrow">Have Questions</span>
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <h4>How do I schedule a test drive?</h4>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>You can schedule a test drive by calling us at +1 (800) 555-1234, emailing sales@dreyautos.com, or using the contact form above. Most test drives can be arranged within 48 hours. We also offer virtual walkarounds via video call.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <h4>What is included in the vehicle inspection?</h4>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Our comprehensive inspections include mechanical evaluation, exterior/interior condition assessment, paint depth measurement, service history review, and a detailed report with photographs. Each vehicle is independently verified for authenticity and mechanical soundness.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <h4>Do you offer financing options?</h4>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, we offer flexible financing options through our partners. Contact our sales team to discuss rates, terms, and qualification requirements. We work with buyers to find solutions that fit their needs.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <h4>Can I trade in my current vehicle?</h4>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! We accept trade-ins on most vehicles. Submit photos and details of your current car, and our appraisers will provide a quote. Trade-in value can be applied toward your new vehicle purchase.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <h4>What warranty do you provide?</h4>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>We offer extended warranty options on most vehicles. Details vary by car age and mileage. All vehicles come with a 7-day inspection period where you can return the vehicle if not completely satisfied.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="section contact">
+        <div class="contact-panel reveal">
+          <div>
+            <span class="eyebrow">Ready to explore</span>
+            <h2>Browse our premium inventory</h2>
+          </div>
+          <a class="button button-primary" href="inventory.html">View Vehicles</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 Drey Autos · A modern automotive showcase.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Contact form handling
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = {
+        fullname: document.getElementById('fullname').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value,
+      };
+
+      // Simulate form submission
+      formMessage.textContent = 'Sending your message...';
+      formMessage.className = 'form-message success';
+      formMessage.style.display = 'block';
+
+      // Simulate delay
+      setTimeout(() => {
+        formMessage.textContent = 'Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.';
+        contactForm.reset();
+
+        setTimeout(() => {
+          formMessage.style.display = 'none';
+        }, 5000);
+      }, 1500);
+    });
+
+    // FAQ toggle functionality
+    function toggleFAQ(element) {
+      const answer = element.nextElementSibling;
+      const toggle = element.querySelector('.faq-toggle');
+
+      // Close other FAQs
+      document.querySelectorAll('.faq-answer.open').forEach(openAnswer => {
+        if (openAnswer !== answer) {
+          openAnswer.classList.remove('open');
+          openAnswer.previousElementSibling.querySelector('.faq-toggle').textContent = '+';
+        }
+      });
+
+      // Toggle current FAQ
+      answer.classList.toggle('open');
+      toggle.textContent = answer.classList.contains('open') ? '−' : '+';
+    }
+
+    // Social buttons
+    document.querySelectorAll('.social-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const title = btn.getAttribute('title');
+        alert(`Follow us on ${title}!`);
+      });
+    });
+  </script>
+</body>
+</html>

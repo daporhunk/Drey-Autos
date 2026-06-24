@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drey Autos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero-section">
+      <nav class="navbar">
+        <a class="brand" href="index.html">Drey Autos</a>
+        <button class="nav-toggle" aria-label="Open navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-inner">
+          <a href="inventory.html">Inventory</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+
+      <section class="hero" id="home">
+        <div class="hero-copy reveal">
+          <h1>Handpicked luxury vehicles</h1>
+          <p class="muted">Explore a small, curated selection of premium cars.</p>
+          <div class="hero-actions">
+            <a class="button button-accent" href="inventory.html">Explore collection</a>
+          </div>
+        </div>
+
+        <div class="hero-media reveal">
+          <div class="video-wrap">
+            <video autoplay muted loop playsinline>
+              <source src="4102a227953cd4b0cf9b24ad936b726d_t1.mp4" type="video/mp4" />
+              Your browser does not support video.
+            </video>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="section features" id="about">
+        <div class="section-header reveal">
+          <span class="eyebrow">Why choose us</span>
+          <h2>Built for drivers who expect clarity and style.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <h3>Transparent pricing</h3>
+            <p>Every listing includes full details, so you shop with confidence and avoid surprises.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3>Luxury presentation</h3>
+            <p>Beautiful imagery, polished layouts, and premium accents elevate the buying experience.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3>Fast support</h3>
+            <p>Responsive help from our team keeps you moving from discovery to delivery.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section inventory" id="inventory">
+        <div class="section-header reveal">
+          <span class="eyebrow">Featured collection</span>
+          <h2>Showcase vehicles for every premium journey.</h2>
+        </div>
+        <div class="car-grid">
+          <article class="car-card reveal" data-title="Mercedes-AMG GLE53" data-price="$89,000" data-desc="Advanced tech, sharp styling, and intelligent drive modes for modern performance." data-img="images/2021 Mercedes-AMG GLE53 Coupe electrifies - CNET.jfif">
+            <img src="images/2021 Mercedes-AMG GLE53 Coupe electrifies - CNET.jfif" alt="Mercedes AMG GLE53" />
+            <div class="car-copy">
+              <h3>Mercedes-AMG GLE53</h3>
+              <p>Advanced tech, sharp styling, and intelligent drive modes for modern performance.</p>
+              <div class="car-meta">
+                <span>$89,000</span>
+                <span>2021 · AWD · 4 seats</span>
+              </div>
+            </div>
+          </article>
+          <article class="car-card reveal" data-title="Executive Sedan" data-price="$55,500" data-desc="An elegant silhouette with pristine finishes and premium cabin comfort." data-img="images/68046644366021029.jfif">
+            <img src="images/68046644366021029.jfif" alt="Luxury sedan" />
+            <div class="car-copy">
+              <h3>Executive Sedan</h3>
+              <p>An elegant silhouette with pristine finishes and premium cabin comfort.</p>
+              <div class="car-meta">
+                <span>$55,500</span>
+                <span>2022 · RWD · 5 seats</span>
+              </div>
+            </div>
+          </article>
+          <article class="car-card reveal" data-title="Sport Crossover" data-price="$62,900" data-desc="Strong performance, agile handling, and a polished urban presence." data-img="images/4503668374065687.jfif">
+            <img src="images/4503668374065687.jfif" alt="Sport crossover" />
+            <div class="car-copy">
+              <h3>Sport Crossover</h3>
+              <p>Strong performance, agile handling, and a polished urban presence.</p>
+              <div class="car-meta">
+                <span>$62,900</span>
+                <span>2023 · AWD · 5 seats</span>
+              </div>
+            </div>
+          </article>
+          <article class="car-card reveal" data-title="Performance Coupe" data-price="$72,400" data-desc="Dynamic curves, crisp details, and a streamlined experience for every drive." data-img="images/10203536651220351.jfif">
+            <img src="images/10203536651220351.jfif" alt="Premium coupe" />
+            <div class="car-copy">
+              <h3>Performance Coupe</h3>
+              <p>Dynamic curves, crisp details, and a streamlined experience for every drive.</p>
+              <div class="car-meta">
+                <span>$72,400</span>
+                <span>2024 · RWD · 4 seats</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div class="contact-panel reveal">
+          <div>
+            <span class="eyebrow">Ready to book</span>
+            <h2>Speak with a specialist about your next luxury vehicle.</h2>
+          </div>
+          <a class="button button-primary" href="contact.html">Contact us</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 Drey Autos · A modern automotive showcase.</p>
+  </footer>
+
+</script>
+  <script src="script.js"></script>
+  <div class="car-modal" id="carModal" aria-hidden="true">
+    <div class="car-modal-backdrop"></div>
+    <div class="car-modal-panel">
+      <button class="car-modal-close" aria-label="Close">×</button>
+      <img src="" alt="" class="car-modal-img" />
+      <div class="car-modal-info">
+        <h3 class="car-modal-title"></h3>
+        <p class="car-modal-desc"></p>
+        <div class="car-modal-meta"></div>
+        <a class="button button-primary" href="#">Inquire</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
